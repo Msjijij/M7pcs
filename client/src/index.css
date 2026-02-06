@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 4%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 6%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 4%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 45 60% 52%;
+  --primary-foreground: 222 47% 4%;
+  --secondary: 217 32% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 32% 12%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 45 60% 52%;
+  --accent-foreground: 222 47% 4%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217 32% 15%;
+  --input: 217 32% 12%;
+  --ring: 45 60% 52%;
+  --radius: 1rem;
+  
+  --font-arabic: 'Cairo', sans-serif;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.05), transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.03), transparent 40%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+.font-arabic {
+  font-family: var(--font-arabic);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F4E285] to-[#D4AF37] animate-gradient-x;
+}
+
+.glass-panel {
+  @apply bg-black/60 backdrop-blur-xl border-b border-white/5;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-500 hover:border-primary/30 hover:shadow-primary/5;
+}
+
+.hover-glow {
+  @apply hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition-all duration-300;
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
